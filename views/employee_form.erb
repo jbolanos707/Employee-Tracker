@@ -1,0 +1,8 @@
+<p>Edit Employee Information</p>
+
+<form action = '/employees/:id/edit' method= 'post'>
+  <input name='_method' value='patch' type='hidden'>
+  <input id='employee_id' name='employee_id' type='hidden' value='<%= @employee.id %>'>
+  <input id='new_name' name='new_name' type='text'>
+  <button type='submit'>Submit Change</button>
+</form>

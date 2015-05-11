@@ -33,5 +33,28 @@ post '/division/:id/new' do
   @division = Division.find(id)
   employee = params.fetch('name')
   new_employee = @division.employees.create({name: employee, division_id: id})
-  erb(:division_employee)
+  redirect('/division/'.concat(id.to_s))
+end
+
+patch '/division/:id/edit' do
+  id = params.fetch('division_edit').to_i
+  @division = Division.find(id)
+  new_name = params.fetch('new_name')
+  @division.update({department: new_name})
+  redirect('/division/'.concat(id.to_s))
+end
+
+get '/employee/:id/edit' do
+  @employee = Employee.find(params.fetch("id").to_i)
+  erb(:employee_form)
+end
+
+patch '/employees/:id/edit' do
+  id = params.fetch("employee_id").to_i
+  employee = Employee.find(id)
+  new_name = params.fetch("new_name")
+  employee.update({:name => new_name})
+  division = employee.division
+  division_id = division.id.to_s
+  redirect('/division/'+ division_id) # "+" is being used in place of .concat(division_id); it's the same thing
 end

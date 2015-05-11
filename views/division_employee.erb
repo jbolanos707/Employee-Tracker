@@ -1,4 +1,4 @@
-<h1><%= @division.department%>'S  Employee List</h1>
+<h1><%= @division.department%>'s  Employee List</h1>
 
 <ul>
   <% @division.employees.each do |employee| %>
@@ -8,9 +8,28 @@
 
 <br><br>
 <p>Add A New Employee To The Division:<p>
-<br><br>
+
 <form action= '/division/:id/new' method= 'post'>
   <input id= "division_id" name= "division_id" type="hidden" value="<%= @division.id %>">
   <input id='name' name='name' type='text'>
   <button type='submit'>Submit</button>
 </form>
+
+<br>
+<br>
+<br>
+
+
+<p>Edit The Division</p>
+
+<form action = '/division/:id/edit' method= 'post'>
+  <input name='_method' value='patch' type='hidden'>
+  <input id='division_edit' name='division_edit' type='hidden' value='<%= @division.id %>'>
+  <input id='new_name' name='new_name' type='text'>
+  <button type='submit'>Submit Change</button>
+</form>
+
+
+
+</form action= "/division/:id/delete" method= "post">
+<input id
