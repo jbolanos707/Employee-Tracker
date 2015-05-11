@@ -58,3 +58,10 @@ patch '/employees/:id/edit' do
   division_id = division.id.to_s
   redirect('/division/'+ division_id) # "+" is being used in place of .concat(division_id); it's the same thing
 end
+
+delete '/division/:id/delete' do
+  id = params.fetch('delete_division').to_i
+  division = Division.find(id)
+  division.destroy()
+  redirect('/divisions')
+end

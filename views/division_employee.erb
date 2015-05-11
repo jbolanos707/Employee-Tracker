@@ -30,6 +30,9 @@
 </form>
 
 
-
-</form action= "/division/:id/delete" method= "post">
-<input id
+<p>Click To Delete This Division</p>
+<form action= "/division/:id/delete" method= "post">
+  <input name='_method' value='delete' type='hidden'>
+  <input id='delete_division' name='delete_division' type='hidden' value='<%= @division.id%>'>
+  <button type='submit'>Delete</button>
+</form>
