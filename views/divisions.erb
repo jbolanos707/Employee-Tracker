@@ -1,0 +1,17 @@
+<h1> All Divisions  </h1>
+
+<ul>
+    <% @divisions.each do |division| %>
+        <li><a href= "/division/<%= division.id %>"> <%= division.department %></a></li>
+    <%end%>
+</ul>
+<br>
+<br>
+<br>
+
+<p>Add a New Division</p>
+
+<form action= "/add_division" method= "post">
+  <input id="department" name="department" type="text">
+  <button type="submit"> Add Division </button>
+</form>
